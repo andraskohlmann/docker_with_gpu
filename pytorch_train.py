@@ -40,8 +40,8 @@ loss_fn = nn.CrossEntropyLoss()
 for epoch in range(5):
     model.train()
     for xb, yb in tqdm(train_loader):
-        pred = model(xb)
-        loss = loss_fn(pred, yb)
+        pred = model(xb.to(dev))
+        loss = loss_fn(pred, yb.to(dev))
 
         loss.backward()
         opt.step()
@@ -49,6 +49,6 @@ for epoch in range(5):
 
     model.eval()
     with torch.no_grad():
-        valid_loss = sum(sum(model(xb).argmax(-1) == yb) for xb, yb in tqdm(test_loader))
+        valid_loss = sum(sum(model(xb.to(dev)).argmax(-1) == yb.to(dev)) for xb, yb in tqdm(test_loader))
 
     print(epoch, valid_loss / (len(test_loader) * 64.))
