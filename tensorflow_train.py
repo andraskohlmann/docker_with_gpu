@@ -1,8 +1,6 @@
 import tensorflow as tf
 
-print(tf.config.list_physical_devices(
-    device_type=None
-))
+if len(tf.config.list_physical_devices(device_type='GPU')) < 1: exit()
 
 mnist = tf.keras.datasets.mnist
 

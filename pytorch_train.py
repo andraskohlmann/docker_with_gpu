@@ -7,9 +7,9 @@ from torchvision import datasets, transforms
 
 from tqdm import tqdm
 
-print(torch.cuda.is_available())
+if not torch.cuda.is_available(): exit()
 
-dev = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
+dev = torch.device("cuda")
 
 train_loader = torch.utils.data.DataLoader(
     datasets.MNIST('/tmp', train=True, download=True,
