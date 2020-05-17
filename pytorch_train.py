@@ -28,7 +28,7 @@ test_loader = torch.utils.data.DataLoader(
 model = nn.Sequential(
     nn.Flatten(),
     nn.Linear(28*28, 128),
-    nn.ReLU()
+    nn.ReLU(),
     nn.Dropout(0.2),
     nn.Linear(128, 10)
 )
