@@ -1,6 +1,8 @@
 import tensorflow as tf
 
-if len(tf.config.list_physical_devices(device_type='GPU')) < 1: exit()
+if len(tf.config.list_physical_devices(device_type='GPU')) < 1:
+    print('No CUDA device')
+    exit()
 
 mnist = tf.keras.datasets.mnist
 

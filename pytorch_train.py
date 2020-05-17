@@ -7,7 +7,9 @@ from torchvision import datasets, transforms
 
 from tqdm import tqdm
 
-if not torch.cuda.is_available(): exit()
+if not torch.cuda.is_available(): 
+    print('No CUDA device')
+    exit()
 
 dev = torch.device("cuda")
 
